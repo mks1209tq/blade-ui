@@ -2,4 +2,7 @@ models:
   # ...
 
 controllers:
+  PassportDataEntry:
+    resource
   # ...
+  
