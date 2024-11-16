@@ -5,7 +5,7 @@
         </h2>
     </x-slot> -->
 
-    <main class="m-3 p-3 xl:m-6 xl:p-6 xl:ml-24 lg:ml-24 border-2 border-red-500">
+    <main class="p-3 border-2 border-red-500">
       <div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-6 border-2 border-blue-500">
         <!-- Main area -->
          main-area

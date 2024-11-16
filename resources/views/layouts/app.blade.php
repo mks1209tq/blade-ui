@@ -41,4 +41,10 @@
             @include('layouts.partials.global-notify')
         </div>
     </body>
+
+    <script>
+        function redirect(url) {
+            window.open(url,"_self");
+        }
+    </script>
 </html>

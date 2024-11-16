@@ -19,12 +19,12 @@ class PassportDataEntryController extends Controller
         return view('apps.hr.passport.data-entry.index', compact('passportDataEntries'));
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request): View
     {
         return view('passportDataEntry.create');
     }
 
-    public function store(PassportDataEntryStoreRequest $request): Response
+    public function store(PassportDataEntryStoreRequest $request): RedirectResponse
     {
         $passportDataEntry = PassportDataEntry::create($request->validated());
 
@@ -33,17 +33,18 @@ class PassportDataEntryController extends Controller
         return redirect()->route('passportDataEntries.index');
     }
 
-    public function show(Request $request, PassportDataEntry $passportDataEntry): Response
+    public function show(Request $request, PassportDataEntry $passportDataEntry): View
     {
         return view('passportDataEntry.show', compact('passportDataEntry'));
     }
 
-    public function edit(Request $request, PassportDataEntry $passportDataEntry): Response
+    public function edit(Request $request,  $id): View
     {
-        return view('passportDataEntry.edit', compact('passportDataEntry'));
+        $passportDataEntry = Passport::findOrFail($id);
+        return view('apps.hr.passport.data-entry.edit', compact('passportDataEntry'));
     }
 
-    public function update(PassportDataEntryUpdateRequest $request, PassportDataEntry $passportDataEntry): Response
+    public function update(PassportDataEntryUpdateRequest $request, PassportDataEntry $passportDataEntry): RedirectResponse
     {
         $passportDataEntry->update($request->validated());
 
@@ -52,7 +53,7 @@ class PassportDataEntryController extends Controller
         return redirect()->route('passportDataEntries.index');
     }
 
-    public function destroy(Request $request, PassportDataEntry $passportDataEntry): Response
+    public function destroy(Request $request, PassportDataEntry $passportDataEntry): RedirectResponse
     {
         $passportDataEntry->delete();
 
